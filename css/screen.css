@@ -1,14 +1,36 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
+@font-face {
+    font-family:"Work sans" ;
+    src: url("/fonts/WorkSans-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family:"Work sans";
+    src: url("/fonts/WorkSans-Bold.ttf");
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Work sans';
+    src: url('/fonts/WorkSans-Medium.ttf');
+    font-weight: 500;
+}
 
+@font-face {
+    font-family: 'Work sans';
+    src: url('/fonts/WorkSans-Regular.ttf');
+    font-weight: 300;
+}
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
 :root {
     /* colors */
-
+    --global-color-back: #CCE7FF;
+    --global-color-front :#173659;
+    
     /* opacity */
 
     /* transitions */
@@ -27,10 +49,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: "Work sans", sans-serif;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color:var(--global-color-back);
+    color: var(--global-color-front);
 }
 
 *,
@@ -241,6 +265,16 @@ input::placeholder {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
+.c-app{
+    width: 400px;
+    margin: auto;
+    display: block;
+    
+}
+.c-app__summary {
+    font-size: 28px;
+    line-height: 40px;
+}
 
 /*
     Component: Logo
@@ -249,7 +283,60 @@ input::placeholder {
 */
 
 .c-logo {
+    font-size: 16px;
+    justify-content: left;
+    display: flex;
+    align-items: center;
+    
+}
 
+
+.c-horizon__line{
+    border-top:var(--global-color-front) 1px solid;
+    padding-top: 7px;
+    margin-bottom: 34px;
+    font-size: 12px;
+}
+.c-horizon__time+.c-horizon__time{
+    float: right;
+}
+
+.c-horizon__sky-wrapper {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    padding-top: 22px;
+    padding-right: 40px;
+
+}
+
+.c-horizon__sky {
+    position: relative;
+    height: 100%;
+}
+
+.c-horizon__sun {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    transform: translateY(22px);
+}
+
+.c-horizon__sun::before{
+    content: attr(data-time);
+    display: block;
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 12px;
+}
+.c-horizon-bottom{
+    
+    position: fixed;
+    bottom: 0;
+    max-width: 400px;
 }
 
 /*
@@ -259,11 +346,13 @@ input::placeholder {
 */
 
 .c-sun {
-
+    width: 22px;
+    height: 22px;
+    fill: var(--global-color-front);
 }
 
 .c-logo .c-sun {
-
+    margin-right: 8px;
 }
 
 /*
@@ -286,6 +375,9 @@ input::placeholder {
     Utilities: Mute
     Mute with opacity
 */
+.u-muted{
+    opacity: 0.6;
+}
 
 /*------------------------------------*\
 #STATES
@@ -300,6 +392,12 @@ input::placeholder {
 /*------------------------------------*\
 #MEDIA
 \*------------------------------------*/
+@media (prefers-color-scheme:dark){
+    :root{
+        --global-color-back:#173659;
+        --global-color-front:#CCE7FF;
+    }
+}
 
 /*
     Print styles.
