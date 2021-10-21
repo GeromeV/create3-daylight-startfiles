@@ -323,6 +323,12 @@ input::placeholder {
     align-items: center;
     width: 40px;
     transform: translateY(22px);
+    left: var(--local-sun-position-left);
+    bottom: var(--local-sun-position-bottom);
+    transition-property: transform,opacity;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transistion-easing);
+    transition-delay: calc(var(--transition-delay)/5);
 }
 
 .c-horizon__sun::before{
@@ -337,6 +343,11 @@ input::placeholder {
     position: fixed;
     bottom: 0;
     max-width: 400px;
+}
+
+.is-loaded .c-horizon__sun{
+    opacity: 1;
+    
 }
 
 /*
